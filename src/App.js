@@ -1,24 +1,76 @@
-import logo from './logo.svg';
+
 import './App.css';
+// import About from './Components/About';
+import Navbar from './Components/Navbar';
+import Textform from './Components/Textform';
+import React, { useState } from 'react'
+import Alert from './Components/Alert';
+
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   // Link
+// } from "react-router-dom";
+
 
 function App() {
+  const [mode, setMode] = useState(`light`);
+  const [alert, setAlert] = useState(null)
+  const showAlert = (message, type)=>{
+    setAlert({
+      msg:message,
+      type:type
+    })
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }
+  const toggleMode = ()=>{
+    if(mode === `light`){
+      setMode(`dark`);
+      document.body.style.backgroundColor=`#042743`;
+      showAlert("Dark Mode has been Enabled", "success");
+      document.title = "TextUtils-Dark Mode";
+      // setInterval(() => {
+      //   document.title = "TextUtils is Amazing App";
+      // }, 2000);
+      // setInterval(() => {
+      //   document.title = "Install TextUtils App Now";
+      // }, 1500);
+    }else{
+      setMode(`light`);
+      document.body.style.backgroundColor=`white`;
+      showAlert("Light Mode has been Enabled", "success");
+      document.title = "TextUtils-Light Mode";
+    }
+    
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+ {/* <Navbar title="TextUtils" aboutText="About TextUtils" /> */}
+ {/* <Router> */}
+ <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+ {/* {<Navbar/>} */}
+<Alert alert={alert} />
+
+<div className="container my-3">
+{/* <Switch> */}
+          {/* users-->-Component-1
+          users/home-->-->-Component-2 */}
+          {/* <Route exact path="/about">
+            <About />
+          </Route> */}
+          {/* <Route exact path="/"> */}
+          <Textform heading="Enter Text Below to Analyze" mode={mode} showAlert={showAlert} />
+          {/* </Route> */}
+{/* </Switch> */}
+</div>
+{/* </Router> */}
+{/* <About /> */}
+
+ 
+  </>
   );
 }
 

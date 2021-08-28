@@ -23,6 +23,7 @@ export default function Textform(props) {
         text.select();
         text.setSelectionRange(0, 9999);
         navigator.clipboard.writeText(text.value);
+        document.getSelection().removeAllRanges();
         props.showAlert("Copied to Clipboard","success");
 
     }
@@ -97,24 +98,24 @@ export default function Textform(props) {
         <div className="container" style={{color:props.mode ===`dark`?`white`:`black`}}>
            <h1>{props.heading}</h1> 
           <div className="mb-3">
-          <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor : props.mode ==='dark'?'grey':'white' ,color:props.mode ==='dark'?'white':'black'}} id="myBox" rows="8"></textarea>
+          <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor : props.mode ==='dark'?'rgb(54 76 95)':'white' ,color:props.mode ==='dark'?'white':'black'}} id="myBox" rows="8"></textarea>
           </div>  
-          <button className="btn btn-primary mx-1" onClick={handleUpClick} >Uppercase Format</button>
-          <button className="btn btn-primary mx-1" onClick={handleLoClick} >Lowercase Format</button>                                
-          <button className="btn btn-primary mx-1" onClick={handleCopy} >Copytext</button>  
-          <button className="btn btn-primary mx-1" onClick={handleClClick} >Clear</button>
-          <button className="btn btn-primary mx-1" onClick={handleReverseText} >Reverse Format</button>  
-          {/* <button className="btn btn-primary mx-1" onClick={download} >Download</button>  */}
-          {/* <button className="btn btn-primary mx-1" onClick={handlesubstrClick} >Substring</button>  */}
-          <button className="btn btn-primary mx-1" onClick={del} >Delete</button>
-          {/* <button className="btn btn-primary mx-1" onClick={capitalize} >Capatilize first String</button>  */}
-          {/* <button className="btn btn-primary mx-1" onClick={intoTitleCase} >Titlecase</button>     */}
-          <button className="btn btn-primary mx-1" onClick={handleExtraSpaces} >Remove Extraspaces</button> 
+          <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick} >Uppercase Format</button>
+          <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLoClick} >Lowercase Format</button>                                
+          <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleCopy} >Copytext</button>  
+          <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleClClick} >Clear</button>
+          <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleReverseText} >Reverse Format</button>  
+          {/* <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={download} >Download</button>  */}
+          {/* <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handlesubstrClick} >Substring</button>  */}
+          <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={del} >Delete</button>
+          {/* <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={capitalize} >Capatilize first String</button>  */}
+          {/* <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={intoTitleCase} >Titlecase</button>     */}
+          <button disabled ={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces} >Remove Extraspaces</button> 
         </div>
         <div className="container my-3" style={{color:props.mode ===`dark`?`white`:`black`}}>
           <h2 className="my-4">Your text Summary</h2>
-          <p>{text.split(" ").length} Words and {text.length} Characters</p>
-          <p>{0.008*text.split(" ").length} Minutes to read..</p>
+          <p>{text.split(" ").filter((element)=>{return element..length} Words and {text.length} Characters</p>
+          <p>{0.008*text.split(" ").filter((element)=>{return element..length} Minutes to read..</p>
           <h2 className="my-4">Preview</h2>
           <p>{text.length>0?text:"Nothing to preview it here!"}</p>
         </div>

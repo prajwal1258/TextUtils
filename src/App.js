@@ -54,7 +54,7 @@ function App() {
  {/* {<Navbar/>} */}
 <Alert alert={alert} />
 
-<div className="container my-3">
+<div className="container my-5">
 {/* <Switch> */}
           {/* users-->-Component-1
           users/home-->-->-Component-2 */}
@@ -62,7 +62,7 @@ function App() {
             <About />
           </Route> */}
           {/* <Route exact path="/"> */}
-          <Textform heading="Enter Text Below to Analyze" mode={mode} showAlert={showAlert} />
+          <Textform heading="Try TextUtils - word counter, character counter, remove extra spaces" mode={mode} showAlert={showAlert} />
           {/* </Route> */}
 {/* </Switch> */}
 </div>

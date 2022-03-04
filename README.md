@@ -1,6 +1,6 @@
 This Project On TextUtils Which is App For Conversion Of Words In Uppercase,Lowercase and Removing the Extra Spaces in Paragraph and Counting the Characters in the Paragraphs and Word Counting with Which tried to make responsive With Proper Themes in it.
 
-The Link to App for Demo https://prajwal1258.github.io/TextUtils/
+
 
 # Getting Started with Create React App
 
